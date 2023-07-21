@@ -32,7 +32,13 @@ function enviarCorreo(destinatario, asunto, cuerpo, adjunto) {
       console.log("Error al enviar el correo para", destinatario, error);
       console.log("");
     } else {
-      console.log("Correo enviado para:", destinatario, info.response);
+      const responseArray = info.response.split(" ");
+      const status1 = responseArray[0];
+      const status2 = responseArray[1];
+      const message = responseArray[2];
+      console.log(
+        `Correo enviado para: ${destinatario}, con la siguiente respuesta del servidor: ${status1} ${status2}, ${message}`
+      );
       console.log("");
     }
   });
